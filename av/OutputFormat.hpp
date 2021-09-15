@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Encoder.hpp"
-#include "common.hpp"
+#include <av/Encoder.hpp>
+#include <av/common.hpp>
 
 namespace av
 {

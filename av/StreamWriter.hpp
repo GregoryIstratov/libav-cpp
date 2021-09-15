@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Encoder.hpp"
-#include "Frame.hpp"
-#include "OptSetter.hpp"
-#include "OutputFormat.hpp"
-#include "Resample.hpp"
-#include "Scale.hpp"
-#include "common.hpp"
+#include <av/Encoder.hpp>
+#include <av/Frame.hpp>
+#include <av/OptSetter.hpp>
+#include <av/OutputFormat.hpp>
+#include <av/Resample.hpp>
+#include <av/Scale.hpp>
+#include <av/common.hpp>
 
 namespace av
 {

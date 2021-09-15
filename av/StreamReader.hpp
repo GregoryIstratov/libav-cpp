@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Decoder.hpp"
-#include "Frame.hpp"
-#include "InputFormat.hpp"
-#include "common.hpp"
+#include <av/Decoder.hpp>
+#include <av/Frame.hpp>
+#include <av/InputFormat.hpp>
+#include <av/common.hpp>
 
 namespace av
 {

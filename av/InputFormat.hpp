@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Decoder.hpp"
-#include "Packet.hpp"
-#include "common.hpp"
+#include <av/Decoder.hpp>
+#include <av/Packet.hpp>
+#include <av/common.hpp>
 
 namespace av
 {

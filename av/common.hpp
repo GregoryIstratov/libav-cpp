@@ -15,6 +15,7 @@ extern "C"
 #include <libavformat/avformat.h>
 #include <libavutil/avutil.h>
 #include <libavutil/opt.h>
+#include <libavutil/imgutils.h>
 #include <libswresample/swresample.h>
 #include <libswscale/swscale.h>
 }
@@ -42,6 +43,7 @@ std::string toString(T&& v) noexcept
 		return std::to_string(v);
 };
 
+inline
 std::string toString(std::string_view v) noexcept
 {
 	return v.data();
@@ -128,12 +130,12 @@ enum LogLevel
 	n_levels
 };
 
-template<typename... Args>
-void writeLog(LogLevel level, internal::SourceLocation&& loc, std::string_view fmt, Args&&... args) noexcept;
 
-#define LOG_AV_ERROR(...) av::writeLog(av::LogLevel::Err, MAKE_AV_SOURCE_LOCATION(), __VA_ARGS__)
-#define LOG_AV_DEBUG(...) av::writeLog(av::LogLevel::Debug, MAKE_AV_SOURCE_LOCATION(), __VA_ARGS__)
-#define LOG_AV_INFO(...) av::writeLog(av::LogLevel::Info, MAKE_AV_SOURCE_LOCATION(), __VA_ARGS__)
+void writeLog(LogLevel level, internal::SourceLocation&& loc, std::string msg) noexcept;
+
+#define LOG_AV_ERROR(...) av::writeLog(av::LogLevel::Err, MAKE_AV_SOURCE_LOCATION(), av::internal::format(__VA_ARGS__))
+#define LOG_AV_DEBUG(...) av::writeLog(av::LogLevel::Debug, MAKE_AV_SOURCE_LOCATION(), av::internal::format(__VA_ARGS__))
+#define LOG_AV_INFO(...) av::writeLog(av::LogLevel::Info, MAKE_AV_SOURCE_LOCATION(), av::internal::format(__VA_ARGS__))
 
 enum class Result
 {

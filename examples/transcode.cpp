@@ -7,10 +7,9 @@
 // and place it in av namespace
 namespace av
 {
-template<typename... Args>
-void writeLog(LogLevel level, internal::SourceLocation&& loc, std::string_view fmt, Args&&... args) noexcept
+void writeLog(LogLevel level, internal::SourceLocation&& loc, std::string msg) noexcept
 {
-	std::cerr << loc.toString() << ": " << av::internal::format(fmt, std::forward<Args>(args)...) << std::endl;
+	std::cerr << loc.toString() << ": " << msg << std::endl;
 }
 }// namespace av
 

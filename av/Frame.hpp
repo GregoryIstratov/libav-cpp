@@ -1,6 +1,6 @@
 #pragma once
 
-#include "common.hpp"
+#include <av/common.hpp>
 
 namespace av
 {
@@ -14,6 +14,24 @@ public:
 	Frame() noexcept
 	    : frame_(av_frame_alloc())
 	{
+	}
+
+	static Expected<Ptr<Frame>> create(int width, int height, AVPixelFormat pixFmt, int align = 0) noexcept
+	{
+		auto frame = av::makePtr<Frame>();
+		if(!frame)
+			RETURN_AV_ERROR("Failed to alloc frame");
+
+		auto f = frame->native();
+		f->width = width;
+		f->height = height;
+		f->format = pixFmt;
+
+		auto err = av_frame_get_buffer(f, align);
+		if(err < 0)
+			RETURN_AV_ERROR("Failed to get buffer: {}", avErrorStr(err));
+
+		return frame;
 	}
 
 	~Frame()
@@ -31,11 +49,11 @@ public:
 		return frame_;
 	}
 
-	auto* native() noexcept
+	AVFrame* native() noexcept
 	{
 		return frame_;
 	}
-	const auto* native() const noexcept
+	const AVFrame* native() const noexcept
 	{
 		return frame_;
 	}
