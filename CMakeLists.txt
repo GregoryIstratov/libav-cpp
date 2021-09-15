@@ -12,4 +12,10 @@ endif ()
 
 file(GLOB AV_FILES av/*.hpp)
 
-add_subdirectory(examples)
+if(LIBAV_CPP_ENABLE_EXAMPLES)
+    add_subdirectory(examples)
+endif()
+
+
+add_library(av-cpp INTERFACE ${AV_FILES})
+target_include_directories(av-cpp INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
