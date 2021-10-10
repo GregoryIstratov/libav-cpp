@@ -3,6 +3,7 @@
 #include <av/Decoder.hpp>
 #include <av/Frame.hpp>
 #include <av/InputFormat.hpp>
+#include <av/Scale.hpp>
 #include <av/common.hpp>
 
 namespace av
