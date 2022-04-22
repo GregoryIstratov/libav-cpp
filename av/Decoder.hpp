@@ -1,6 +1,7 @@
 #pragma once
 
 #include <av/Frame.hpp>
+#include <av/Packet.hpp>
 #include <av/common.hpp>
 
 namespace av
@@ -13,7 +14,7 @@ class Decoder : NoCopyable
 	{}
 
 public:
-	static Expected<Ptr<Decoder>> create(AVCodec* codec, AVStream* stream, AVRational framerate = {})
+	static Expected<Ptr<Decoder>> create(const AVCodec* codec, AVStream* stream, AVRational framerate = {})
 	{
 		if (!av_codec_is_decoder(codec))
 			RETURN_AV_ERROR("{} is not a decoder", codec->name);
