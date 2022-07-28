@@ -78,7 +78,7 @@ public:
 
 		streams_.emplace_back(std::move(stream));
 
-		if (streams_.size() - 1 != index)
+		if ((int)streams_.size() - 1 != index)
 			RETURN_AV_ERROR("Stream index {} != streams count - 1 {}", index, streams_.size() - 1);
 
 		const AVCodec* codec = c->native()->codec;
@@ -139,7 +139,7 @@ public:
 
 		streams_.emplace_back(std::move(stream));
 
-		if (streams_.size() - 1 != index)
+		if ((int)streams_.size() - 1 != index)
 			RETURN_AV_ERROR("Stream index {} != streams count - 1 {}", index, streams_.size() - 1);
 
 		const AVCodec* codec = c->native()->codec;

@@ -126,7 +126,7 @@ public:
 private:
 	[[nodiscard]] Expected<std::tuple<AVStream*, Ptr<Encoder>>> getStream(int index)
 	{
-		if (index < 0 || index >= streams_.size())
+		if (index < 0 || index >= (int)streams_.size())
 			RETURN_AV_ERROR("Stream index '{}' is out of range [{}-{}]", index, 0, streams_.size());
 
 		return streams_[index];

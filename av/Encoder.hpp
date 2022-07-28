@@ -226,7 +226,7 @@ private:
 
 		for (int i = 0;; ++i)
 		{
-			if (i >= packets.size())
+			if (i >= (int)packets.size())
 			{
 				packets.emplace_back();
 			}

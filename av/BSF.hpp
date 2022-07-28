@@ -59,7 +59,7 @@ public:
 
 		for (int i = 0;; ++i)
 		{
-			if (i >= outPkts.size())
+			if (i >= (int)outPkts.size())
 			{
 				outPkts.emplace_back();
 			}
