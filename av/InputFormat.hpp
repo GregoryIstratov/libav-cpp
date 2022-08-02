@@ -92,7 +92,7 @@ public:
 private:
 	Expected<void> findBestStream(AVMediaType type) noexcept
 	{
-		AVCodec* dec = nullptr;
+		const AVCodec* dec = nullptr;
 		int stream_i = av_find_best_stream(ic_, type, -1, -1, &dec, 0);
 		if (stream_i == AVERROR_STREAM_NOT_FOUND)
 			RETURN_AV_ERROR("Failed to find {} stream in '{}'", av_get_media_type_string(type), url_);
